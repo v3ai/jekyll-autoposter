@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Check if Jekyll is installed
+if ! command -v jekyll &> /dev/null; then
+    echo "Jekyll is not installed. Please install Jekyll and try again."
+    exit 1
+fi
+
+# Check if Micro text editor is installed
+if ! command -v micro &> /dev/null; then
+    echo "Micro text editor is not installed. Please install Micro and try again."
+    exit 1
+fi
+
+# Set the Jekyll directory
+dir=PUT YOUR DIR HERE
+
+cd $dir
+# Create the new post
+jekyll post "$1"
+
+
+# Open the post in Micro text editor (could be any editor)
+micro _posts/*"$1".md
+
+cd $dir || exit
+
+git add .
+git commit -m "$1"
+git push
+
+
