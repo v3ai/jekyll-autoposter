@@ -19,9 +19,10 @@ cd $dir
 # Create the new post
 jekyll post "$1"
 
+date=$(date +%Y-%m-%d)
 
 # Open the post in Micro text editor (could be any editor)
-micro _posts/*"$1".md
+micro _posts/"$date"-"$1".md
 
 cd $dir || exit
 
