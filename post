@@ -23,7 +23,7 @@ dir=PUT YOUR DIR HERE
 cd $dir
 
 # Create the new post
-jekyll post "$post_name"
+jekyll post "$1"
 
 # Get date as a variable
 date=$(date +%Y-%m-%d)
