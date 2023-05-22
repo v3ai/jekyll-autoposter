@@ -1,4 +1,5 @@
 #!/bin/bash
+# Rhett Applestone
 
 # Check if Jekyll is installed
 if ! command -v jekyll &> /dev/null; then
@@ -15,19 +16,23 @@ fi
 # Set the Jekyll directory
 dir=PUT YOUR DIR HERE
 
+# Change into that dir
 cd $dir
+
 # Create the new post
 jekyll post "$1"
 
+# Get date as a variable
 date=$(date +%Y-%m-%d)
 
 # Open the post in Micro text editor (could be any editor)
+
 micro _posts/"$date"-"$1".md
 
+# Change to the Jekyll dir on exit
 cd $dir || exit
 
+# Push changes
 git add .
 git commit -m "$1"
 git push
-
-
